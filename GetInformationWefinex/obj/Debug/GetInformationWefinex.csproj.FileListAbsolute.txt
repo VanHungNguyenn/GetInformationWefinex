@@ -1,0 +1,12 @@
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\GetInformationWefinex.exe.config
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\GetInformationWefinex.exe
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\GetInformationWefinex.pdb
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\UpGo.UI2.dll
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.csprojAssemblyReference.cache
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.FormMain.resources
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.Properties.Resources.resources
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.csproj.GenerateResource.cache
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.csproj.CoreCompileInputs.cache
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.csproj.CopyComplete
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.exe
+F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.pdb
