@@ -13,6 +13,8 @@ namespace GetInformationWefinex
     {
         public IWebDriver driver;
 
+        public bool Logined = false;
+
         public const string CLICK = "CLICK";
         public const string SEND_KEYS = "SEND_KEYS";
         public const string CLEAR = "CLEAR";
@@ -128,6 +130,12 @@ namespace GetInformationWefinex
             ElementAction(SEND_KEYS, "//input[@class='md-input']", text: account);
             ElementAction(SEND_KEYS, "//input[@class='md-input password']", text: password);
             ElementAction(CLICK, "//button[@class='button btn-large wbtn btn-radius w-100 siginButton']");
+            Sleep(2);
+        }
+
+        public void GetInformation()
+        {
+
         }
     }
 }

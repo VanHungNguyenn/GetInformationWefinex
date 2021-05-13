@@ -25,6 +25,16 @@ namespace GetInformationWefinex
         private MyChrome myChrome;
 
 
+        public void Run()
+        {
+            myChrome = new MyChrome();
+            string account = textboxAccount.Text;
+            string password = textboxPassword.Text;
+
+            myChrome.Login(account, password);
+
+
+        }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -33,10 +43,14 @@ namespace GetInformationWefinex
                 MessageBox.Show("Chưa nhập tài khoản hoặc mật khẩu", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // Create thread
             Thread t = new Thread(() =>
             {
-
-            })
+                Run();
+            });
+            threads.Add(t);
+            t.Start();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
