@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GetInformationWefinex
 {
@@ -122,7 +123,7 @@ namespace GetInformationWefinex
             driver.Quit();
         }
 
-        public void Login(string account, string password)
+        public bool Login(string account, string password)
         {
             string url = "https://wefinex.net/login";
             driver.Navigate().GoToUrl(url);
@@ -130,12 +131,38 @@ namespace GetInformationWefinex
             ElementAction(SEND_KEYS, "//input[@class='md-input']", text: account);
             ElementAction(SEND_KEYS, "//input[@class='md-input password']", text: password);
             ElementAction(CLICK, "//button[@class='button btn-large wbtn btn-radius w-100 siginButton']");
-            Sleep(2);
+            Sleep(3);
+            bool UrlRight = driver.Url.Contains("login");
+            if (UrlRight)
+            {
+                MessageBox.Show("Vui lòng ấn capcha để tiếp tục...", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            while (!Logined)
+            {
+                UrlRight = driver.Url.Contains("index");
+                if (UrlRight)
+                {
+                    Logined = false;
+                }
+                Sleep(3);
+            }
+            return Logined;
         }
 
         public void GetInformation()
         {
+            string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]";
+            IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
+            foreach (IWebElement Path in Paths)
+            {
 
+            }
+            
         }
     }
 }
+
+
+
+
+//*[name()='path']

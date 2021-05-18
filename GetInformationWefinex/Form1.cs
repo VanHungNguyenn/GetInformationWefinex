@@ -31,7 +31,12 @@ namespace GetInformationWefinex
             string account = textboxAccount.Text;
             string password = textboxPassword.Text;
 
-            myChrome.Login(account, password);
+
+            //Login success
+            if (myChrome.Login(account, password)) {
+                myChrome.GetInformation();
+            }
+            
 
 
         }
