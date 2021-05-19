@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -142,22 +143,52 @@ namespace GetInformationWefinex
                 UrlRight = driver.Url.Contains("index");
                 if (UrlRight)
                 {
-                    Logined = false;
+                    Logined = true;
                 }
                 Sleep(3);
             }
             return Logined;
         }
 
-        public void GetInformation()
+        
+
+        public void GetInformationAvailable(string filePath)
         {
-            string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]";
+            string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
             IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
+            List<string> Chart = new List<string>();
             foreach (IWebElement Path in Paths)
             {
+                string Status = GetStatusPath(Path);
 
+                File.AppendAllText(filePath, Status + Environment.NewLine);
+
+                Chart.Add(Status);
             }
-            
+        }
+
+        public void GetInformationCurrent(string filePath)
+        {
+            string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
+            IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
+            int CountPaths = Paths.Count;
+            string Status = GetStatusPath(Paths.Last());
+            File.AppendAllText(filePath, Status + Environment.NewLine);
+        }
+
+        public string GetStatusPath(IWebElement path)
+        {
+            string ColorColumn = path.GetAttribute("fill");
+            string status = "";
+            if (ColorColumn == "#31BAA0")
+            {
+                status = "Increase";
+            }
+            else if (ColorColumn == "#FC5F5F")
+            {
+                status = "Decrease";
+            }
+            return status;
         }
     }
 }
@@ -165,4 +196,3 @@ namespace GetInformationWefinex
 
 
 
-//*[name()='path']

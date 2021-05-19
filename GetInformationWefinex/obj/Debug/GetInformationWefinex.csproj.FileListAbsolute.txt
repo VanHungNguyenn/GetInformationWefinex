@@ -12,3 +12,9 @@ F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefine
 F:\C#\GetInformationWefinex\GetInformationWefinex\obj\Debug\GetInformationWefinex.pdb
 F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\WebDriver.dll
 F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\WebDriver.xml
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\EPPlus.dll
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\System.ComponentModel.Annotations.dll
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\UpGo.UI3.dll
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\EPPlus.xml
+F:\C#\GetInformationWefinex\GetInformationWefinex\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

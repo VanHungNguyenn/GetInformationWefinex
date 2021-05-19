@@ -29,12 +29,20 @@ namespace GetInformationWefinex
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textboxAccount = new Guna.UI2.WinForms.Guna2TextBox();
             this.textboxPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelLeft = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.btnStop = new Guna.UI2.WinForms.Guna2Button();
             this.btnStart = new Guna.UI2.WinForms.Guna2Button();
+            this.dGV = new System.Windows.Forms.DataGridView();
+            this.label = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV)).BeginInit();
             this.SuspendLayout();
             // 
             // textboxAccount
@@ -91,6 +99,8 @@ namespace GetInformationWefinex
             // 
             // panelLeft
             // 
+            this.panelLeft.Controls.Add(this.linkLabel1);
+            this.panelLeft.Controls.Add(this.label);
             this.panelLeft.Controls.Add(this.btnStop);
             this.panelLeft.Controls.Add(this.btnStart);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -112,7 +122,7 @@ namespace GetInformationWefinex
             this.btnStop.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnStop.ForeColor = System.Drawing.Color.White;
             this.btnStop.HoverState.Parent = this.btnStop;
-            this.btnStop.Location = new System.Drawing.Point(12, 263);
+            this.btnStop.Location = new System.Drawing.Point(12, 218);
             this.btnStop.Name = "btnStop";
             this.btnStop.ShadowDecoration.Parent = this.btnStop;
             this.btnStop.Size = new System.Drawing.Size(149, 40);
@@ -130,7 +140,7 @@ namespace GetInformationWefinex
             this.btnStart.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnStart.ForeColor = System.Drawing.Color.White;
             this.btnStart.HoverState.Parent = this.btnStart;
-            this.btnStart.Location = new System.Drawing.Point(12, 205);
+            this.btnStart.Location = new System.Drawing.Point(12, 162);
             this.btnStart.Name = "btnStart";
             this.btnStart.ShadowDecoration.Parent = this.btnStart;
             this.btnStart.Size = new System.Drawing.Size(149, 40);
@@ -138,18 +148,81 @@ namespace GetInformationWefinex
             this.btnStart.Text = "LẤY THÔNG TIN";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // dGV
+            // 
+            this.dGV.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.Time,
+            this.Status});
+            this.dGV.Location = new System.Drawing.Point(179, 63);
+            this.dGV.Name = "dGV";
+            this.dGV.Size = new System.Drawing.Size(608, 375);
+            this.dGV.TabIndex = 3;
+            // 
+            // label
+            // 
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label.Location = new System.Drawing.Point(3, 429);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(65, 18);
+            this.label.TabIndex = 2;
+            this.label.Text = "Writing by:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.linkLabel1.Location = new System.Drawing.Point(74, 429);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(67, 17);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "VanHung";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            // 
+            // Time
+            // 
+            this.Time.HeaderText = "Time";
+            this.Time.Name = "Time";
+            // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dGV);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.textboxPassword);
             this.Controls.Add(this.textboxAccount);
             this.Name = "FormMain";
             this.Text = "GET INFORMATION WEFINEX";
             this.panelLeft.ResumeLayout(false);
+            this.panelLeft.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -161,6 +234,12 @@ namespace GetInformationWefinex
         private Guna.UI2.WinForms.Guna2CustomGradientPanel panelLeft;
         private Guna.UI2.WinForms.Guna2Button btnStart;
         private Guna.UI2.WinForms.Guna2Button btnStop;
+        private System.Windows.Forms.DataGridView dGV;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel label;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }
 
