@@ -21,6 +21,7 @@ namespace GetInformationWefinex
         public FormMain()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
             textboxAccount.Text = "phanhoaiduc.tvb@gmail.com";
             textboxPassword.Text = "03121997";
         }
@@ -36,17 +37,19 @@ namespace GetInformationWefinex
             string account = textboxAccount.Text;
             string password = textboxPassword.Text;
 
-            string filePath = @"F:\helo.txt";
+            string filePath = @"F:\hello.txt";
 
             //If Login success
             if (myChrome.Login(account, password)) {
                 //Get thông tin những cột có sẵn
-                myChrome.GetInformationAvailable(filePath);
+                myChrome.GetInformationAvailable(filePath, dGV);
                 //Get thông tin theo thời gian 30s
-                myChrome.GetInformationCurrent(filePath);
+                while (true)
+                {
+                    myChrome.GetInformationCurrent(filePath, dGV);
+                    Thread.Sleep(30000);
+                }    
             }
-            
-
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -71,7 +74,7 @@ namespace GetInformationWefinex
 
         }
 
-
+        
         
         private List<TestItemClass> CreateTestItems()
         {
@@ -217,5 +220,6 @@ namespace GetInformationWefinex
         {
             Process.Start("https://www.facebook.com/vanhung.dev");
         }
+
     }
 }

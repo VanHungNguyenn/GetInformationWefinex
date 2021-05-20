@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -102,6 +103,7 @@ namespace GetInformationWefinex
             }
         }
 
+
         private void Sleep(double seconds)
         {
             Thread.Sleep(Convert.ToInt32(seconds * 1000));
@@ -113,7 +115,7 @@ namespace GetInformationWefinex
             service.HideCommandPromptWindow = true;
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--disable-notifications");
-            options.AddArgument("--window-size=1000,800");
+            options.AddArgument("--window-size=1600,1300");
             options.AddArguments("--disable-extensions");
             driver = new ChromeDriver(service, options);
         }
@@ -152,28 +154,34 @@ namespace GetInformationWefinex
 
         
 
-        public void GetInformationAvailable(string filePath)
+        public void GetInformationAvailable(string filePath, DataGridView dGV)
         {
             string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
             IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
-            List<string> Chart = new List<string>();
-            foreach (IWebElement Path in Paths)
-            {
-                string Status = GetStatusPath(Path);
 
+            string Time = "0";
+            for (int i = 0; i < Paths.Count - 2; i++)
+            {
+                string Status = GetStatusPath(Paths.ToList()[i]);
+                Addrows(dGV, Time, Status);
                 File.AppendAllText(filePath, Status + Environment.NewLine);
 
-                Chart.Add(Status);
             }
         }
 
-        public void GetInformationCurrent(string filePath)
+        public int i = 0;
+
+        public void GetInformationCurrent(string filePath, DataGridView dGV)
         {
             string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
-            IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
-            int CountPaths = Paths.Count;
-            string Status = GetStatusPath(Paths.Last());
-            File.AppendAllText(filePath, Status + Environment.NewLine);
+            int CountPaths = driver.FindElements(By.XPath(xpath)).Count;
+            Console.WriteLine(CountPaths);
+            string Status = GetStatusPath(driver.FindElements(By.XPath(xpath))[CountPaths - 2]);
+            DateTime TimeCurrent = DateTime.Now;
+            string Time = TimeCurrent.ToString("h:mm:ss tt");
+            Addrows(dGV, Time, Status);
+            i++;
+            File.AppendAllText(filePath, i + " " + Status + Environment.NewLine);
         }
 
         public string GetStatusPath(IWebElement path)
@@ -182,13 +190,33 @@ namespace GetInformationWefinex
             string status = "";
             if (ColorColumn == "#31BAA0")
             {
-                status = "Increase";
+                status = "Tăng";
             }
             else if (ColorColumn == "#FC5F5F")
             {
-                status = "Decrease";
+                status = "Giảm";
             }
             return status;
+        }
+
+        public void Addrows(DataGridView dGV, string time, string status)
+        {
+            dGV.Invoke(new MethodInvoker(() =>
+            {
+                int myRowIndex = dGV.Rows.Add();
+                DataGridViewRow row = dGV.Rows[myRowIndex];
+                row.Cells["STT"].Value = dGV.Rows.Count;
+                row.Cells["Time"].Value = time;
+                row.Cells["Status"].Value = status;
+                if (status == "Tăng")
+                {
+                    row.Cells["Status"].Style.BackColor = Color.Green;
+                }
+                else
+                {
+                    row.Cells["Status"].Style.BackColor = Color.Red;
+                }
+            }));   
         }
     }
 }

@@ -29,15 +29,15 @@ namespace GetInformationWefinex
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textboxAccount = new Guna.UI2.WinForms.Guna2TextBox();
             this.textboxPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelLeft = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnStop = new Guna.UI2.WinForms.Guna2Button();
             this.btnStart = new Guna.UI2.WinForms.Guna2Button();
             this.dGV = new System.Windows.Forms.DataGridView();
-            this.label = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,6 +112,29 @@ namespace GetInformationWefinex
             this.panelLeft.Size = new System.Drawing.Size(172, 450);
             this.panelLeft.TabIndex = 2;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.linkLabel1.Location = new System.Drawing.Point(74, 429);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(67, 17);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "VanHung";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label
+            // 
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label.Location = new System.Drawing.Point(3, 429);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(65, 18);
+            this.label.TabIndex = 2;
+            this.label.Text = "Writing by:";
+            // 
             // btnStop
             // 
             this.btnStop.BackColor = System.Drawing.Color.Transparent;
@@ -151,14 +174,14 @@ namespace GetInformationWefinex
             // dGV
             // 
             this.dGV.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -168,29 +191,6 @@ namespace GetInformationWefinex
             this.dGV.Name = "dGV";
             this.dGV.Size = new System.Drawing.Size(608, 375);
             this.dGV.TabIndex = 3;
-            // 
-            // label
-            // 
-            this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label.Location = new System.Drawing.Point(3, 429);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(65, 18);
-            this.label.TabIndex = 2;
-            this.label.Text = "Writing by:";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.linkLabel1.Location = new System.Drawing.Point(74, 429);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(67, 17);
-            this.linkLabel1.TabIndex = 3;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "VanHung";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // STT
             // 
