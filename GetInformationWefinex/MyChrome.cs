@@ -115,7 +115,7 @@ namespace GetInformationWefinex
             service.HideCommandPromptWindow = true;
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--disable-notifications");
-            options.AddArgument("--window-size=1600,1300");
+            options.AddArgument("--window-size=1400,1100");
             options.AddArguments("--disable-extensions");
             driver = new ChromeDriver(service, options);
         }
@@ -152,20 +152,18 @@ namespace GetInformationWefinex
             return Logined;
         }
 
-        
-
         public void GetInformationAvailable(string filePath, DataGridView dGV)
         {
             string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
             IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
-
+            DateTime TimeCurrent = DateTime.Now;
             string Time = "0";
             for (int i = 0; i < Paths.Count - 2; i++)
             {
                 string Status = GetStatusPath(Paths.ToList()[i]);
+                Time = TimeOfX(TimeCurrent, Paths.Count - 2, i + 1).ToString("h:mm:ss tt");
                 Addrows(dGV, Time, Status);
                 File.AppendAllText(filePath, Status + Environment.NewLine);
-
             }
         }
 
@@ -182,7 +180,19 @@ namespace GetInformationWefinex
             Addrows(dGV, Time, Status);
             i++;
             File.AppendAllText(filePath, i + " " + Status + Environment.NewLine);
+
+            string xpathOrderTime = "//div[@id='betAmount']/div[@class='bet-wrapper']/div/div/a/p";
+            int orderTime = Convert.ToInt32(driver.FindElements(By.XPath(xpathOrderTime))[1].Text.Split('s')[0]);
+            if (orderTime < 10)
+            {
+                Sleep(15);
+            } else
+            {
+                Sleep(30);
+            }
         }
+
+
 
         public string GetStatusPath(IWebElement path)
         {
@@ -197,6 +207,28 @@ namespace GetInformationWefinex
                 status = "Giảm";
             }
             return status;
+        }
+
+        public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime;
+        }
+
+        public double DateTimeToUnix(DateTime MyDateTime)
+        {
+            TimeSpan timeSpan = MyDateTime - new DateTime(1970, 1, 1, 7, 0, 0);
+
+            return timeSpan.TotalSeconds;
+        }
+
+        public DateTime TimeOfX(DateTime TimeCurrent, int NumberTimes, int Time)
+        {
+            double timeX = DateTimeToUnix(TimeCurrent) - ((NumberTimes - Time) * 30);
+            DateTime dateTime = UnixTimeStampToDateTime(timeX);
+            return dateTime;
         }
 
         public void Addrows(DataGridView dGV, string time, string status)

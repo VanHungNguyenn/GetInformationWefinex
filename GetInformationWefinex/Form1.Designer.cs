@@ -29,7 +29,8 @@ namespace GetInformationWefinex
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textboxAccount = new Guna.UI2.WinForms.Guna2TextBox();
             this.textboxPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelLeft = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
@@ -41,6 +42,7 @@ namespace GetInformationWefinex
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExcel = new Guna.UI2.WinForms.Guna2Button();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +101,7 @@ namespace GetInformationWefinex
             // 
             // panelLeft
             // 
+            this.panelLeft.Controls.Add(this.btnExcel);
             this.panelLeft.Controls.Add(this.linkLabel1);
             this.panelLeft.Controls.Add(this.label);
             this.panelLeft.Controls.Add(this.btnStop);
@@ -116,13 +119,13 @@ namespace GetInformationWefinex
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.linkLabel1.Location = new System.Drawing.Point(74, 429);
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.linkLabel1.Location = new System.Drawing.Point(66, 430);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(67, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(100, 15);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "VanHung";
+            this.linkLabel1.Text = "VanHungNguyen";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label
@@ -174,19 +177,26 @@ namespace GetInformationWefinex
             // dGV
             // 
             this.dGV.AllowUserToAddRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
             this.Time,
             this.Status});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGV.Location = new System.Drawing.Point(179, 63);
             this.dGV.Name = "dGV";
             this.dGV.Size = new System.Drawing.Size(608, 375);
@@ -207,6 +217,24 @@ namespace GetInformationWefinex
             this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcel.BorderRadius = 10;
+            this.btnExcel.BorderThickness = 1;
+            this.btnExcel.CheckedState.Parent = this.btnExcel;
+            this.btnExcel.CustomImages.Parent = this.btnExcel;
+            this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExcel.HoverState.Parent = this.btnExcel;
+            this.btnExcel.Location = new System.Drawing.Point(12, 279);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.ShadowDecoration.Parent = this.btnExcel;
+            this.btnExcel.Size = new System.Drawing.Size(149, 40);
+            this.btnExcel.TabIndex = 4;
+            this.btnExcel.Text = "EXPORT EXCEL";
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // FormMain
             // 
@@ -240,6 +268,7 @@ namespace GetInformationWefinex
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private Guna.UI2.WinForms.Guna2Button btnExcel;
     }
 }
 
