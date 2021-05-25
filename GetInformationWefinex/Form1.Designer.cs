@@ -34,6 +34,7 @@ namespace GetInformationWefinex
             this.textboxAccount = new Guna.UI2.WinForms.Guna2TextBox();
             this.textboxPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelLeft = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.btnExcel = new Guna.UI2.WinForms.Guna2Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnStop = new Guna.UI2.WinForms.Guna2Button();
@@ -42,7 +43,6 @@ namespace GetInformationWefinex
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExcel = new Guna.UI2.WinForms.Guna2Button();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV)).BeginInit();
             this.SuspendLayout();
@@ -115,6 +115,24 @@ namespace GetInformationWefinex
             this.panelLeft.Size = new System.Drawing.Size(172, 450);
             this.panelLeft.TabIndex = 2;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcel.BorderRadius = 10;
+            this.btnExcel.BorderThickness = 1;
+            this.btnExcel.CheckedState.Parent = this.btnExcel;
+            this.btnExcel.CustomImages.Parent = this.btnExcel;
+            this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExcel.HoverState.Parent = this.btnExcel;
+            this.btnExcel.Location = new System.Drawing.Point(12, 278);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.ShadowDecoration.Parent = this.btnExcel;
+            this.btnExcel.Size = new System.Drawing.Size(149, 40);
+            this.btnExcel.TabIndex = 4;
+            this.btnExcel.Text = "EXPORT EXCEL";
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -148,7 +166,7 @@ namespace GetInformationWefinex
             this.btnStop.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnStop.ForeColor = System.Drawing.Color.White;
             this.btnStop.HoverState.Parent = this.btnStop;
-            this.btnStop.Location = new System.Drawing.Point(12, 218);
+            this.btnStop.Location = new System.Drawing.Point(12, 220);
             this.btnStop.Name = "btnStop";
             this.btnStop.ShadowDecoration.Parent = this.btnStop;
             this.btnStop.Size = new System.Drawing.Size(149, 40);
@@ -217,24 +235,6 @@ namespace GetInformationWefinex
             this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
-            this.btnExcel.BorderRadius = 10;
-            this.btnExcel.BorderThickness = 1;
-            this.btnExcel.CheckedState.Parent = this.btnExcel;
-            this.btnExcel.CustomImages.Parent = this.btnExcel;
-            this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.HoverState.Parent = this.btnExcel;
-            this.btnExcel.Location = new System.Drawing.Point(12, 279);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.ShadowDecoration.Parent = this.btnExcel;
-            this.btnExcel.Size = new System.Drawing.Size(149, 40);
-            this.btnExcel.TabIndex = 4;
-            this.btnExcel.Text = "EXPORT EXCEL";
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // FormMain
             // 
