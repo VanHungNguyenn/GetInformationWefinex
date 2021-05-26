@@ -43,6 +43,7 @@ namespace GetInformationWefinex
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkRemember = new System.Windows.Forms.CheckBox();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV)).BeginInit();
             this.SuspendLayout();
@@ -215,9 +216,9 @@ namespace GetInformationWefinex
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGV.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dGV.Location = new System.Drawing.Point(179, 63);
+            this.dGV.Location = new System.Drawing.Point(179, 84);
             this.dGV.Name = "dGV";
-            this.dGV.Size = new System.Drawing.Size(608, 375);
+            this.dGV.Size = new System.Drawing.Size(608, 354);
             this.dGV.TabIndex = 3;
             // 
             // STT
@@ -236,22 +237,38 @@ namespace GetInformationWefinex
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
             // 
+            // checkRemember
+            // 
+            this.checkRemember.AutoSize = true;
+            this.checkRemember.Checked = true;
+            this.checkRemember.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkRemember.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkRemember.Location = new System.Drawing.Point(496, 57);
+            this.checkRemember.Name = "checkRemember";
+            this.checkRemember.Size = new System.Drawing.Size(105, 21);
+            this.checkRemember.TabIndex = 5;
+            this.checkRemember.Text = "Lưu mật khẩu";
+            this.checkRemember.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkRemember);
             this.Controls.Add(this.dGV);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.textboxPassword);
             this.Controls.Add(this.textboxAccount);
             this.Name = "FormMain";
             this.Text = "GET INFORMATION WEFINEX";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -269,6 +286,7 @@ namespace GetInformationWefinex
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private Guna.UI2.WinForms.Guna2Button btnExcel;
+        private System.Windows.Forms.CheckBox checkRemember;
     }
 }
 

@@ -152,46 +152,93 @@ namespace GetInformationWefinex
             return Logined;
         }
 
-        public void GetInformationAvailable(string filePath, DataGridView dGV)
-        {
-            string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
-            IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
-            DateTime TimeCurrent = DateTime.Now;
-            string Time = "0";
-            for (int i = 0; i < Paths.Count - 2; i++)
-            {
-                string Status = GetStatusPath(Paths.ToList()[i]);
-                Time = TimeOfX(TimeCurrent, Paths.Count - 2, i + 1).ToString("h:mm:ss tt");
-                Addrows(dGV, Time, Status);
-                File.AppendAllText(filePath, Status + Environment.NewLine);
-            }
-        }
-
-        public int i = 0;
-
-        public void GetInformationCurrent(string filePath, DataGridView dGV)
+        public void GetInformationAvailable(DataGridView dGV)
         {
             string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
             int CountPaths = driver.FindElements(By.XPath(xpath)).Count;
-            Console.WriteLine(CountPaths);
-            string Status = GetStatusPath(driver.FindElements(By.XPath(xpath))[CountPaths - 2]);
-            DateTime TimeCurrent = DateTime.Now;
-            string Time = TimeCurrent.ToString("h:mm:ss tt");
-            Addrows(dGV, Time, Status);
-            i++;
-            File.AppendAllText(filePath, i + " " + Status + Environment.NewLine);
-
             string xpathOrderTime = "//div[@id='betAmount']/div[@class='bet-wrapper']/div/div/a/p";
-            int orderTime = Convert.ToInt32(driver.FindElements(By.XPath(xpathOrderTime))[1].Text.Split('s')[0]);
-            if (orderTime < 10)
+            if(CountPaths % 2 == 1)
             {
-                Sleep(15);
+                if (driver.FindElements(By.XPath(xpathOrderTime))[0].Text == "Hãy đặt lệnh")
+                {
+                    IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
+                    DateTime TimeCurrent = DateTime.Now;
+                    string Time = "0";
+                    for (int i = 1; i < Paths.Count - 2; i = i + 2)
+                    {
+                        string Status = GetStatusPath(Paths.ToList()[i]);
+                        Time = TimeOfX(TimeCurrent, Paths.Count - 2, i + 1).ToString("h:mm:ss tt");
+                        Addrows(dGV, Time, Status);
+                    }
+                }
+                else
+                {
+                    IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
+                    DateTime TimeCurrent = DateTime.Now;
+                    string Time = "0";
+                    for (int i = 0; i < Paths.Count - 2; i = i + 2)
+                    {
+                        string Status = GetStatusPath(Paths.ToList()[i]);
+                        Time = TimeOfX(TimeCurrent, Paths.Count - 2, i + 1).ToString("h:mm:ss tt");
+                        Addrows(dGV, Time, Status);
+                    }
+                }
+            } else
+            {
+                if (driver.FindElements(By.XPath(xpathOrderTime))[0].Text == "Hãy đặt lệnh")
+                {
+                    IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
+                    DateTime TimeCurrent = DateTime.Now;
+                    string Time = "0";
+                    for (int i = 0; i < Paths.Count - 2; i = i + 2)
+                    {
+                        string Status = GetStatusPath(Paths.ToList()[i]);
+                        Time = TimeOfX(TimeCurrent, Paths.Count - 2, i + 1).ToString("h:mm:ss tt");
+                        Addrows(dGV, Time, Status);
+                    }
+                }
+                else
+                {
+                    IReadOnlyCollection<IWebElement> Paths = driver.FindElements(By.XPath(xpath));
+                    DateTime TimeCurrent = DateTime.Now;
+                    string Time = "0";
+                    for (int i = 1; i < Paths.Count - 2; i = i + 2)
+                    {
+                        string Status = GetStatusPath(Paths.ToList()[i]);
+                        Time = TimeOfX(TimeCurrent, Paths.Count - 2, i + 1).ToString("h:mm:ss tt");
+                        Addrows(dGV, Time, Status);
+                    }
+                }
+            }              
+        }
+
+
+        public void GetInformationCurrent(DataGridView dGV)
+        {
+            string xpathOrderTime = "//div[@id='betAmount']/div[@class='bet-wrapper']/div/div/a/p";
+            if (driver.FindElements(By.XPath(xpathOrderTime))[0].Text == "Hãy đặt lệnh")
+            {
+                string xpath = "//div[@id='chart-instance']/div[@class='highcharts-container ']/*[name()='svg']/*[name()='g' and contains(@class,'highcharts')]/*[name()='g' and contains(@class,'highcharts-series-0')]/*[name()='path']";
+                int CountPaths = driver.FindElements(By.XPath(xpath)).Count;
+                string Status = GetStatusPath(driver.FindElements(By.XPath(xpath))[CountPaths - 2]);
+                DateTime TimeCurrent = DateTime.Now;
+                string Time = TimeCurrent.ToString("h:mm:ss tt");
+                Addrows(dGV, Time, Status);
+
+                int orderTime = Convert.ToInt32(driver.FindElements(By.XPath(xpathOrderTime))[1].Text.Split('s')[0]);
+                if (orderTime < 10)
+                {
+                    Sleep(45);
+                }
+                else
+                {
+                    Sleep(60);
+                }
             } else
             {
                 Sleep(30);
-            }
+            }         
         }
-
 
 
         public string GetStatusPath(IWebElement path)
